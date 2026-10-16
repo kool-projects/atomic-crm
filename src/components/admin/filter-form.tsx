@@ -138,9 +138,10 @@ export type FilterFormBaseProps = Omit<
 const StyledForm = (props: React.FormHTMLAttributes<HTMLFormElement>) => {
   return (
     <form
+      data-tour="list-filters"
       {...props}
       className={cn(
-        "flex flex-row justify-start items-end gap-x-2 gap-y-3 pointer-events-none flex-wrap",
+        "flex flex-row justify-start items-end gap-x-2 gap-y-3 pointer-events-none flex-wrap w-fit max-w-full",
         "[&_.form-helper-text]:hidden",
         props.className,
       )}

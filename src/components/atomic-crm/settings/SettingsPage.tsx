@@ -26,24 +26,49 @@ import {
   useConfigurationUpdater,
   type ConfigurationContextValue,
 } from "../root/ConfigurationContext";
+import { defaultColorScheme } from "../root/colorScheme";
+import { crmIcons, type CrmIconName } from "../misc/crmIcons";
 import { defaultConfiguration } from "../root/defaultConfiguration";
+import { ColorSchemePanel } from "./ColorSchemePanel";
 import { SettingsTags } from "./SettingsTags";
 
-const SECTIONS = [
+const SECTIONS: {
+  id: string;
+  label: string;
+  fallback: string;
+  icon: CrmIconName;
+}[] = [
   {
     id: "branding",
+    icon: "appearance",
     label: "crm.settings.sections.branding",
     fallback: "Branding",
   },
   {
     id: "companies",
+    icon: "companies",
     label: "resources.companies.name",
     fallback: "Companies",
   },
-  { id: "deals", label: "resources.deals.name", fallback: "Deals" },
-  { id: "notes", label: "resources.notes.name", fallback: "Notes" },
-  { id: "tasks", label: "resources.tasks.name", fallback: "Tasks" },
-  { id: "tags", label: "resources.tags.name", fallback: "Tags" },
+  {
+    id: "deals",
+    icon: "deals",
+    label: "resources.deals.name",
+    fallback: "Deals",
+  },
+  {
+    id: "notes",
+    icon: "notes",
+    label: "resources.notes.name",
+    fallback: "Notes",
+  },
+  {
+    id: "tasks",
+    icon: "tasks",
+    label: "resources.tasks.name",
+    fallback: "Tasks",
+  },
+  { id: "tags", icon: "tags", label: "resources.tags.name", fallback: "Tags" },
 ];
 
 /** Ensure every item in a { value, label } array has a value (slug from label). */
@@ -123,6 +148,7 @@ const transformFormValues = (data: Record<string, any>) => ({
     title: data.title,
     lightModeLogo: data.lightModeLogo,
     darkModeLogo: data.darkModeLogo,
+    colorScheme: data.colorScheme,
     currency: data.currency,
     companySectors: ensureValues(data.companySectors),
     dealCategories: ensureValues(data.dealCategories),
@@ -171,6 +197,7 @@ const SettingsForm = () => {
       title: config.title,
       lightModeLogo: { src: config.lightModeLogo },
       darkModeLogo: { src: config.darkModeLogo },
+      colorScheme: config.colorScheme ?? defaultColorScheme,
       currency: config.currency,
       companySectors: config.companySectors,
       dealCategories: config.dealCategories,
@@ -263,8 +290,12 @@ const SettingsFormFields = () => {
                   .getElementById(section.id)
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="block w-full text-left px-3 py-1 text-sm rounded-md hover:text-foreground hover:bg-muted transition-colors"
+              className="flex w-full items-center gap-2 text-left px-3 py-1 text-sm rounded-md hover:text-foreground hover:bg-muted transition-colors"
             >
+              {(() => {
+                const Icon = crmIcons[section.icon];
+                return <Icon className="size-4 shrink-0" />;
+              })()}
               {translate(section.label, { smart_count: 2 })}
             </button>
           ))}
@@ -276,7 +307,8 @@ const SettingsFormFields = () => {
         {/* Branding */}
         <Card id="branding">
           <CardContent className="space-y-4">
-            <h2 className="text-xl font-semibold text-muted-foreground">
+            <h2 className="flex items-center gap-2 text-xl font-semibold text-muted-foreground">
+              <crmIcons.appearance className="size-5 text-primary" />
               {translate("crm.settings.sections.branding")}
             </h2>
             <TextInput source="title" label="crm.settings.app_title" />
@@ -306,13 +338,18 @@ const SettingsFormFields = () => {
                 />
               </div>
             </div>
+
+            <Separator />
+
+            <ColorSchemePanel />
           </CardContent>
         </Card>
 
         {/* Companies */}
         <Card id="companies">
           <CardContent className="space-y-4">
-            <h2 className="text-xl font-semibold text-muted-foreground">
+            <h2 className="flex items-center gap-2 text-xl font-semibold text-muted-foreground">
+              <crmIcons.companies className="size-5 text-primary" />
               {translate("resources.companies.name", {
                 smart_count: 2,
               })}
@@ -335,7 +372,8 @@ const SettingsFormFields = () => {
         {/* Deals */}
         <Card id="deals">
           <CardContent className="space-y-4">
-            <h2 className="text-xl font-semibold text-muted-foreground">
+            <h2 className="flex items-center gap-2 text-xl font-semibold text-muted-foreground">
+              <crmIcons.deals className="size-5 text-primary" />
               {translate("resources.deals.name", {
                 smart_count: 2,
               })}
@@ -429,7 +467,8 @@ const SettingsFormFields = () => {
         {/* Notes */}
         <Card id="notes">
           <CardContent className="space-y-4">
-            <h2 className="text-xl font-semibold text-muted-foreground">
+            <h2 className="flex items-center gap-2 text-xl font-semibold text-muted-foreground">
+              <crmIcons.notes className="size-5 text-primary" />
               {translate("resources.notes.name", {
                 smart_count: 2,
               })}
@@ -449,7 +488,8 @@ const SettingsFormFields = () => {
         {/* Tasks */}
         <Card id="tasks">
           <CardContent className="space-y-4">
-            <h2 className="text-xl font-semibold text-muted-foreground">
+            <h2 className="flex items-center gap-2 text-xl font-semibold text-muted-foreground">
+              <crmIcons.tasks className="size-5 text-primary" />
               {translate("resources.tasks.name", {
                 smart_count: 2,
               })}

@@ -203,6 +203,45 @@ export const frenchCrmMessages = {
       filters: {
         only_mine: "Seulement les affaires que je gère",
       },
+      card: {
+        age_short: "%{days} j",
+        age_title:
+          "Sans contact depuis %{days} jours · dernière interaction : %{date}",
+      },
+      view: {
+        label: "Vue",
+        board: "Tableau",
+        focus: "Focus",
+        show_details: "Afficher les détails",
+      },
+      sort: {
+        label: "Trier les cartes",
+        manual: "Mon ordre (glisser)",
+        cooling: "Plus longtemps sans contact d'abord",
+        newest: "Plus récentes d'abord",
+        oldest: "Plus anciennes d'abord",
+        value: "Plus grande valeur d'abord",
+        closing: "Clôture la plus proche",
+        client: "Client A–Z",
+      },
+      board: {
+        more_stages: "Autres étapes",
+        previous_stages: "Précédentes",
+      },
+      focus: {
+        title: "Commencez ici",
+        progress:
+          "%{done} sur %{total} faits. Seules celles-ci vous attendent aujourd'hui.",
+        empty: "Rien ne vous attend pour l'instant.",
+        days_without_contact: "%{days} jours sans contact",
+        talked: "Je leur ai parlé",
+        done: "Fait",
+        marked: "Marqué comme contacté",
+        all_done: "Tout est en ordre pour le moment.",
+        next: "Afficher les suivantes",
+        all_title: "Toutes les affaires",
+        closed_summary: "Clôturées et en pause :",
+      },
       archived: {
         action: "Archiver",
         error: "Erreur : affaire non archivée",
@@ -425,7 +464,187 @@ export const frenchCrmMessages = {
       to: "à",
       load_more: "Charger plus d'activité",
     },
+    onboarding: {
+      menu_dashboard: "Visite du tableau de bord",
+      menu_deals: "Visite des affaires",
+      next: "Suivant",
+      previous: "Retour",
+      done: "Terminer",
+      skip: "Passer la visite",
+      progress: "%{current} sur %{total}",
+      dashboard: {
+        welcome: {
+          title: "Bienvenue sur votre tableau de bord",
+          description:
+            "Une visite d'une minute pour savoir où se trouve chaque chose. Vous pouvez quitter à tout moment.",
+        },
+        filters: {
+          title: "Filtres",
+          description_admin:
+            "Voyez toute la clinique ou choisissez un commercial, et changez la période.",
+          description_member:
+            "Ici, vous ne voyez que vos propres chiffres. Changez la période quand vous voulez.",
+        },
+        kpis: {
+          title: "Vos quatre chiffres clés",
+          description:
+            "Conversion des leads, panier moyen, ventes et tâches en retard. La flèche compare avec la période précédente.",
+        },
+        tabs: {
+          title: "Un onglet par sujet",
+          description: "Agenda, Ventes, Leads, Équipe, Clients et Activité.",
+        },
+        agenda: {
+          title: "L'agenda du jour",
+          description:
+            "Vos tâches du jour, par horaire. Cliquez sur l'une d'elles pour ouvrir le contact.",
+        },
+        team: {
+          title: "Onglet Équipe",
+          description:
+            "Qui vend le plus, qui perd le plus, et si le suivi est fait dans les délais.",
+        },
+        calendar: {
+          title: "Calendrier",
+          description:
+            "Voyez le mois, la semaine ou une liste. Chaque couleur est un commercial.",
+        },
+        tools: {
+          title: "Recherche et profil",
+          description:
+            "Cherchez un contact ici. Pour revoir cette visite, utilisez le menu du profil.",
+        },
+      },
+      deals: {
+        views: {
+          title: "Deux façons de regarder",
+          description:
+            "Le tableau montre toutes les étapes. Focus ne montre que les quelques affaires qui vous attendent aujourd'hui.",
+        },
+        board: {
+          title: "Votre tableau de ventes",
+          description:
+            "Chaque colonne est une étape de la vente, avec son nombre et son total. Faites défiler sur le côté pour voir les suivantes.",
+        },
+        card: {
+          title: "Une carte d'affaire",
+          description:
+            "Client et entreprise. Survolez pour voir le commercial, la date et les étiquettes. Cliquez pour ouvrir, ou glissez vers l'étape suivante.",
+        },
+        cooling: {
+          title: "Temps sans contact",
+          description:
+            "Un nombre apparaît après 2 jours sans contact. Rouge doux : 7 jours ou plus.",
+        },
+        sort: {
+          title: "Trier chaque colonne",
+          description:
+            "Mettez en premier les plus longtemps sans contact, les plus grosses ou les plus récentes.",
+        },
+        filters: {
+          title: "Recherche et filtres",
+          description:
+            "Filtrez par entreprise, procédure ou commercial. « Seulement les affaires que je gère » n'affiche que les vôtres.",
+        },
+        new: {
+          title: "Nouvelle affaire",
+          description: "Créez une nouvelle affaire ici.",
+        },
+        empty_intro: {
+          title: "Votre tableau est vide",
+          description:
+            "Les affaires que vous créez apparaîtront ici, une colonne par étape.",
+        },
+        empty_create: {
+          title: "Créez votre première affaire",
+          description: "Créez-en une ici, ou importez un fichier CSV.",
+        },
+      },
+    },
+    calendar: {
+      title: "Calendrier",
+      empty: "Aucune tâche sur cette période.",
+      truncated:
+        "Seules les %{count} premières tâches sont affichées : certaines peuvent manquer.",
+    },
     dashboard: {
+      title: "Tableau de bord",
+      truncated:
+        "Seuls les %{count} premiers enregistrements de chaque liste sont affichés : certains chiffres peuvent être incomplets.",
+      filters: {
+        period: "Période",
+        periods: {
+          "7d": "7 derniers jours",
+          "30d": "30 derniers jours",
+          "90d": "90 derniers jours",
+          "6m": "6 derniers mois",
+          "12m": "12 derniers mois",
+        },
+        salesperson: "Commercial",
+        everyone: "Tout le monde",
+        only_yours: "Vos chiffres uniquement",
+      },
+      kpi: {
+        conversion: "Conversion des leads",
+        conversion_hint: "%{won} ventes pour %{leads} nouveaux contacts",
+        average_ticket: "Panier moyen",
+        average_ticket_hint: "par affaire gagnée",
+        won_amount: "Ventes gagnées",
+        won_amount_hint: "%{count} affaires conclues",
+        overdue_tasks: "Tâches en retard",
+        overdue_tasks_hint: "ouvertes et échues",
+        vs_previous: "vs période précédente",
+        points: "pts",
+        no_data: "Aucune donnée",
+      },
+      tabs: {
+        agenda: "Agenda",
+        sales: "Ventes",
+        leads: "Leads",
+        team: "Équipe",
+        clients: "Clients",
+        activity: "Activité",
+      },
+      charts: {
+        empty: "Rien à afficher pour cette période.",
+        contacts_unit: "contacts",
+        won: "Gagnées",
+        lost: "Perdues",
+        won_vs_lost: "Ventes gagnées × perdues",
+        won_vs_lost_hint: "par date de clôture",
+        by_category: "Revenus par catégorie",
+        by_category_hint: "affaires gagnées",
+        leads_by_day: "Nouveaux contacts par jour",
+        leads_by_week: "Nouveaux contacts par semaine",
+        leads_by_month: "Nouveaux contacts par mois",
+        leads_hint: "%{count} sur la période",
+        funnel: "Entonnoir de vente",
+        funnel_hint: "affaires créées sur la période, par étape actuelle",
+        funnel_contacts: "Nouveaux contacts",
+        growth: "Croissance des contacts",
+        growth_hint: "nouveaux contacts par semaine",
+        growth_this_week:
+          "Cette semaine : %{count} (%{change} vs semaine dernière)",
+        portfolio: "Contacts par commercial",
+        unassigned: "Non assigné",
+        team_results: "Gagnées × perdues par commercial",
+        team_results_hint: "sur la période",
+        most_wins: "Plus de ventes : %{name} (%{count})",
+        most_losses: "Plus de pertes : %{name} (%{count})",
+        win_rate: "%{rate}% gagnées",
+        follow_up: "Suivi dans les délais",
+        follow_up_hint: "tâches faites avant leur échéance",
+        overdue_count: "%{smart_count} en retard |||| %{smart_count} en retard",
+        dormant: "Contacts silencieux",
+        dormant_hint:
+          "%{count} contacts sans nouvelles depuis plus de %{days} jours",
+        dormant_last_seen: "Dernier contact",
+        dormant_days: "%{days} jours",
+        dormant_none: "Aucun contact silencieux.",
+        top_clients: "Meilleurs clients",
+        top_clients_hint: "affaires gagnées, depuis le début",
+        purchases: "%{smart_count} achat |||| %{smart_count} achats",
+      },
       deals_chart: "Revenus des affaires à venir",
       deals_pipeline: "Pipeline des affaires",
       latest_activity: "Dernière activité",
@@ -518,6 +737,12 @@ export const frenchCrmMessages = {
     },
     settings: {
       about: "À propos",
+      color_scheme: {
+        accent: "Couleur d'accent",
+        help: "Choisissez un préréglage ou vos propres couleurs. Le contraste s'ajuste seul en mode clair et sombre.",
+        neutral: "Teinte de base",
+        title: "Palette de couleurs",
+      },
       companies: {
         sectors: "Secteurs",
       },

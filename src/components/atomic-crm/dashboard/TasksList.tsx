@@ -1,7 +1,7 @@
-import { CheckSquare } from "lucide-react";
 import { useTranslate } from "ra-core";
 import { Card } from "@/components/ui/card";
 
+import { crmIcons } from "../misc/crmIcons";
 import { AddTask } from "../tasks/AddTask";
 import { TasksListContent } from "../tasks/TasksListContent";
 
@@ -11,7 +11,7 @@ export const TasksList = () => {
     <div className="flex flex-col gap-2">
       <div className="flex items-center">
         <div className="mr-3 flex">
-          <CheckSquare className="text-muted-foreground w-6 h-6" />
+          <crmIcons.tasks className="text-primary w-6 h-6" />
         </div>
         <h2 className="text-xl font-semibold text-muted-foreground flex-1">
           {translate("crm.dashboard.upcoming_tasks", {

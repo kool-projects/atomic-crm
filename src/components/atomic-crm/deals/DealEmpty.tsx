@@ -47,7 +47,9 @@ export const DealEmpty = ({ children }: { children?: ReactNode }) => {
             </p>
           </div>
           <div className="flex space-x-8">
-            <CreateButton label="resources.deals.action.create" />
+            <span className="inline-flex" data-tour="deal-empty-create">
+              <CreateButton label="resources.deals.action.create" />
+            </span>
             <DataImportButton resource="deals" />
           </div>
           <DealCreate open={!!matchCreate} />

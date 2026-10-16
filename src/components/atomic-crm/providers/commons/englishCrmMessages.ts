@@ -199,6 +199,43 @@ export const englishCrmMessages = {
       filters: {
         only_mine: "Only deals I manage",
       },
+      card: {
+        age_short: "%{days} d",
+        age_title: "No contact for %{days} days · last interaction: %{date}",
+      },
+      view: {
+        label: "View",
+        board: "Board",
+        focus: "Focus",
+        show_details: "Show details",
+      },
+      sort: {
+        label: "Sort cards",
+        manual: "My order (drag)",
+        cooling: "Longest without contact first",
+        newest: "Newest first",
+        oldest: "Oldest first",
+        value: "Highest value first",
+        closing: "Closest closing date",
+        client: "Client A–Z",
+      },
+      board: {
+        more_stages: "More stages",
+        previous_stages: "Previous",
+      },
+      focus: {
+        title: "Start here",
+        progress: "%{done} of %{total} done. Only these ask for you today.",
+        empty: "Nothing is waiting for you right now.",
+        days_without_contact: "%{days} days without contact",
+        talked: "I've talked to them",
+        done: "Done",
+        marked: "Marked as contacted",
+        all_done: "All set for now.",
+        next: "Show the next ones",
+        all_title: "All deals",
+        closed_summary: "Closed and parked:",
+      },
       archived: {
         action: "Archive",
         error: "Error: deal not archived",
@@ -420,7 +457,185 @@ export const englishCrmMessages = {
       to: "to",
       load_more: "Load more activity",
     },
+    onboarding: {
+      menu_dashboard: "Dashboard tour",
+      menu_deals: "Deals tour",
+      next: "Next",
+      previous: "Back",
+      done: "Done",
+      skip: "Skip tour",
+      progress: "%{current} of %{total}",
+      dashboard: {
+        welcome: {
+          title: "Welcome to your dashboard",
+          description:
+            "A one-minute tour of where everything is. You can leave at any time.",
+        },
+        filters: {
+          title: "Filters",
+          description_admin:
+            "See the whole clinic or pick one salesperson, and change the period.",
+          description_member:
+            "Here you only see your own figures. Change the period whenever you like.",
+        },
+        kpis: {
+          title: "Your four key numbers",
+          description:
+            "Lead conversion, average ticket, sales and overdue tasks. The arrow compares with the previous period.",
+        },
+        tabs: {
+          title: "One tab per subject",
+          description: "Agenda, Sales, Leads, Team, Clients and Activity.",
+        },
+        agenda: {
+          title: "Today's agenda",
+          description:
+            "Your tasks for today, by time. Click one to open the contact.",
+        },
+        team: {
+          title: "Team tab",
+          description:
+            "Who sells the most, who loses the most, and whether follow-up is on time.",
+        },
+        calendar: {
+          title: "Calendar",
+          description:
+            "See the month, the week or a list. Each colour is a salesperson.",
+        },
+        tools: {
+          title: "Search and profile",
+          description:
+            "Search any contact here. To see this tour again, use the profile menu.",
+        },
+      },
+      deals: {
+        views: {
+          title: "Two ways to look",
+          description:
+            "Board shows every stage. Focus shows only the few deals that need you today.",
+        },
+        board: {
+          title: "Your sales board",
+          description:
+            "Each column is a stage of the sale, with its count and total. Scroll sideways to see the next ones.",
+        },
+        card: {
+          title: "A deal card",
+          description:
+            "Client and company. Hover to see the salesperson, date and tags. Click to open, or drag to the next stage.",
+        },
+        cooling: {
+          title: "Time without contact",
+          description:
+            "A number appears after 2 days without contact. Soft red means 7 days or more.",
+        },
+        sort: {
+          title: "Sort each column",
+          description:
+            "Put first the ones longest without contact, the biggest, or the newest.",
+        },
+        filters: {
+          title: "Search and filters",
+          description:
+            "Filter by company, procedure or salesperson. “Only deals I manage” shows just yours.",
+        },
+        new: {
+          title: "New deal",
+          description: "Create a new deal here.",
+        },
+        empty_intro: {
+          title: "Your board is empty",
+          description:
+            "Deals you create will show up here, one column per stage.",
+        },
+        empty_create: {
+          title: "Create your first deal",
+          description: "Create one here, or import a CSV file.",
+        },
+      },
+    },
+    calendar: {
+      title: "Calendar",
+      empty: "No tasks in this period.",
+      truncated:
+        "Showing only the first %{count} tasks, so some may be missing.",
+    },
     dashboard: {
+      title: "Dashboard",
+      truncated:
+        "Showing only the first %{count} records of each list, so some figures may be incomplete.",
+      filters: {
+        period: "Period",
+        periods: {
+          "7d": "Last 7 days",
+          "30d": "Last 30 days",
+          "90d": "Last 90 days",
+          "6m": "Last 6 months",
+          "12m": "Last 12 months",
+        },
+        salesperson: "Salesperson",
+        everyone: "Everyone",
+        only_yours: "Showing only your figures",
+      },
+      kpi: {
+        conversion: "Lead conversion",
+        conversion_hint: "%{won} sales from %{leads} new contacts",
+        average_ticket: "Average ticket",
+        average_ticket_hint: "per won deal",
+        won_amount: "Won sales",
+        won_amount_hint: "%{count} deals closed",
+        overdue_tasks: "Overdue tasks",
+        overdue_tasks_hint: "open and past their due date",
+        vs_previous: "vs. previous period",
+        points: "pts",
+        no_data: "No data",
+      },
+      tabs: {
+        agenda: "Agenda",
+        sales: "Sales",
+        leads: "Leads",
+        team: "Team",
+        clients: "Clients",
+        activity: "Activity",
+      },
+      charts: {
+        empty: "Nothing to show for this period yet.",
+        contacts_unit: "contacts",
+        won: "Won",
+        lost: "Lost",
+        won_vs_lost: "Won × lost sales",
+        won_vs_lost_hint: "by closing date",
+        by_category: "Revenue by category",
+        by_category_hint: "won deals",
+        leads_by_day: "New contacts per day",
+        leads_by_week: "New contacts per week",
+        leads_by_month: "New contacts per month",
+        leads_hint: "%{count} in the period",
+        funnel: "Sales funnel",
+        funnel_hint: "deals created in the period, by current stage",
+        funnel_contacts: "New contacts",
+        growth: "Contact growth",
+        growth_hint: "new contacts per week",
+        growth_this_week: "This week: %{count} (%{change} vs. last week)",
+        portfolio: "Contacts per salesperson",
+        unassigned: "Unassigned",
+        team_results: "Won × lost per salesperson",
+        team_results_hint: "in the period",
+        most_wins: "Most wins: %{name} (%{count})",
+        most_losses: "Most losses: %{name} (%{count})",
+        win_rate: "%{rate}% won",
+        follow_up: "Follow-up on time",
+        follow_up_hint: "tasks done by their due date",
+        overdue_count: "%{smart_count} overdue |||| %{smart_count} overdue",
+        dormant: "Gone quiet",
+        dormant_hint: "%{count} contacts with no news for over %{days} days",
+        dormant_last_seen: "Last contact",
+        dormant_days: "%{days} days",
+        dormant_none: "Nobody has gone quiet.",
+        top_clients: "Top clients",
+        top_clients_hint: "won deals, all time",
+        purchases: "%{smart_count} purchase |||| %{smart_count} purchases",
+      },
       deals_chart: "Upcoming Deal Revenue",
       deals_pipeline: "Deals Pipeline",
       latest_activity: "Latest Activity",
@@ -509,6 +724,12 @@ export const englishCrmMessages = {
     },
     settings: {
       about: "About",
+      color_scheme: {
+        accent: "Accent color",
+        help: "Pick a preset or your own colors. Contrast adjusts itself in light and dark mode.",
+        neutral: "Base tone",
+        title: "Color scheme",
+      },
       companies: {
         sectors: "Sectors",
       },

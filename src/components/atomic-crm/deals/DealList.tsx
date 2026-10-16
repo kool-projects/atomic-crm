@@ -17,6 +17,8 @@ import { SearchInput } from "@/components/admin/search-input";
 import { SelectInput } from "@/components/admin/select-input";
 
 import { DataImportButton } from "../dataImport/DataImportButton";
+import { getDealsTourSteps } from "../onboarding/tourSteps";
+import { useProductTour } from "../onboarding/useProductTour";
 import { useConfigurationContext } from "../root/ConfigurationContext";
 import { TopToolbar } from "../layout/TopToolbar";
 import { AccountManagerInput } from "../sales/AccountManagerInput";
@@ -24,7 +26,10 @@ import { DealArchivedList } from "./DealArchivedList";
 import { DealCreate } from "./DealCreate";
 import { DealEdit } from "./DealEdit";
 import { DealEmpty } from "./DealEmpty";
+import { DealFocusView } from "./DealFocusView";
 import { DealListContent } from "./DealListContent";
+import { DealViewSwitcher } from "./DealViewSwitcher";
+import { useDealView } from "./useDealView";
 import { DealShow } from "./DealShow";
 import { OnlyMineInput } from "./OnlyMineInput";
 
@@ -89,8 +94,15 @@ const DealLayout = () => {
   const matchShow = matchPath("/deals/:id/show", location.pathname);
   const matchEdit = matchPath("/deals/:id", location.pathname);
 
+  const [view] = useDealView();
   const { data, isPending, filterValues } = useListContext();
   const hasFilters = filterValues && Object.keys(filterValues).length > 0;
+  const isEmpty = !data?.length && !hasFilters;
+  useProductTour({
+    tourId: "deals",
+    steps: getDealsTourSteps({ isEmpty }),
+    ready: !isPending,
+  });
 
   if (isPending) return null;
   if (!data?.length && !hasFilters)
@@ -105,7 +117,7 @@ const DealLayout = () => {
 
   return (
     <div className="w-full">
-      <DealListContent />
+      {view === "focus" ? <DealFocusView /> : <DealListContent />}
       <DealArchivedList />
       <DealCreate open={!!matchCreate} />
       <DealEdit open={!!matchEdit && !matchCreate} id={matchEdit?.params.id} />
@@ -116,10 +128,13 @@ const DealLayout = () => {
 
 const DealActions = () => (
   <TopToolbar>
+    <DealViewSwitcher />
     <FilterButton />
     <DataImportButton resource="deals" />
     <ExportButton />
-    <CreateButton label="resources.deals.action.new" />
+    <span className="inline-flex" data-tour="deal-new">
+      <CreateButton label="resources.deals.action.new" />
+    </span>
   </TopToolbar>
 );
 

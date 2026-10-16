@@ -162,11 +162,19 @@
           "type": "registry:component"
         },
         {
+          "path": "src/components/atomic-crm/settings/ColorSchemePanel.tsx",
+          "type": "registry:component"
+        },
+        {
           "path": "src/components/atomic-crm/search/searchModel.ts",
           "type": "registry:component"
         },
         {
           "path": "src/components/atomic-crm/search/GlobalSearchButton.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/sales/useSalesScope.ts",
           "type": "registry:component"
         },
         {
@@ -179,6 +187,10 @@
         },
         {
           "path": "src/components/atomic-crm/sales/index.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/sales/SalespersonSelect.tsx",
           "type": "registry:component"
         },
         {
@@ -202,11 +214,19 @@
           "type": "registry:component"
         },
         {
+          "path": "src/components/atomic-crm/root/useStoredColorScheme.ts",
+          "type": "registry:component"
+        },
+        {
           "path": "src/components/atomic-crm/root/useConfigurationLoader.ts",
           "type": "registry:component"
         },
         {
           "path": "src/components/atomic-crm/root/defaultConfiguration.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/root/colorScheme.ts",
           "type": "registry:component"
         },
         {
@@ -326,6 +346,10 @@
           "type": "registry:component"
         },
         {
+          "path": "src/components/atomic-crm/providers/commons/portugueseCrmMessages.ts",
+          "type": "registry:component"
+        },
+        {
           "path": "src/components/atomic-crm/providers/commons/mergeContacts.ts",
           "type": "registry:component"
         },
@@ -359,6 +383,18 @@
         },
         {
           "path": "src/components/atomic-crm/providers/commons/activity.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/onboarding/useProductTour.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/onboarding/tourSteps.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/onboarding/tourProgress.ts",
           "type": "registry:component"
         },
         {
@@ -450,6 +486,10 @@
           "type": "registry:component"
         },
         {
+          "path": "src/components/atomic-crm/misc/crmIcons.ts",
+          "type": "registry:component"
+        },
+        {
           "path": "src/components/atomic-crm/misc/Status.tsx",
           "type": "registry:component"
         },
@@ -503,6 +543,22 @@
         },
         {
           "path": "src/components/atomic-crm/misc/ActiveFilterButton.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/misc/motion/motionFeatures.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/misc/motion/Stagger.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/misc/motion/MotionProvider.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/misc/motion/AnimatedNumber.tsx",
           "type": "registry:component"
         },
         {
@@ -582,6 +638,14 @@
           "type": "registry:component"
         },
         {
+          "path": "src/components/atomic-crm/deals/useDealView.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/deals/useDealInteractions.ts",
+          "type": "registry:component"
+        },
+        {
           "path": "src/components/atomic-crm/deals/stages.ts",
           "type": "registry:component"
         },
@@ -594,7 +658,23 @@
           "type": "registry:component"
         },
         {
+          "path": "src/components/atomic-crm/deals/dealSorting.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/deals/dealInteractionsContext.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/deals/dealCooling.ts",
+          "type": "registry:component"
+        },
+        {
           "path": "src/components/atomic-crm/deals/OnlyMineInput.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/deals/DealViewSwitcher.tsx",
           "type": "registry:component"
         },
         {
@@ -611,6 +691,10 @@
         },
         {
           "path": "src/components/atomic-crm/deals/DealInputs.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/deals/DealFocusView.tsx",
           "type": "registry:component"
         },
         {
@@ -690,6 +774,22 @@
           "type": "registry:component"
         },
         {
+          "path": "src/components/atomic-crm/dashboard/useDashboardFormat.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/dashboard/useDashboardData.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/dashboard/dashboardPeriods.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/dashboard/dashboardMetrics.ts",
+          "type": "registry:component"
+        },
+        {
           "path": "src/components/atomic-crm/dashboard/Welcome.tsx",
           "type": "registry:component"
         },
@@ -719,6 +819,30 @@
         },
         {
           "path": "src/components/atomic-crm/dashboard/DashboardStepper.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/dashboard/DashboardParts.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/dashboard/DashboardPanels.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/dashboard/DashboardPage.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/dashboard/DashboardKpis.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/dashboard/DashboardFilters.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/dashboard/DashboardCharts.tsx",
           "type": "registry:component"
         },
         {
@@ -879,6 +1003,22 @@
         },
         {
           "path": "src/components/atomic-crm/companies/AutocompleteCompanyInput.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/calendar/useCalendarTasks.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/calendar/calendarEvents.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/calendar/TasksCalendar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/components/atomic-crm/calendar/CalendarPage.tsx",
           "type": "registry:component"
         },
         {

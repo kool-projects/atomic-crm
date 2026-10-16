@@ -1,3 +1,4 @@
+import { defaultColorScheme } from "./colorScheme";
 import type { ConfigurationContextValue } from "./ConfigurationContext";
 // Import the logos as module assets so Vite resolves their URL relative to the
 // JS chunk (import.meta.url), not the current route. A plain "./logos/..." path
@@ -10,7 +11,7 @@ export const defaultLightModeLogo = lightModeLogo;
 
 export const defaultCurrency = "USD";
 
-export const defaultTitle = "Atomic CRM";
+export const defaultTitle = "Clínica Aurora";
 
 export const defaultCompanySectors = [
   { value: "communication-services", label: "Communication Services" },
@@ -75,4 +76,5 @@ export const defaultConfiguration: ConfigurationContextValue = {
   title: defaultTitle,
   darkModeLogo: defaultDarkModeLogo,
   lightModeLogo: defaultLightModeLogo,
+  colorScheme: defaultColorScheme,
 };

@@ -6,11 +6,21 @@ afterEach(() => {
 });
 
 describe("i18nProvider", () => {
-  it("registers en and fr locales", () => {
+  it("registers en, fr and pt-BR locales", () => {
     expect(i18nProvider.getLocales?.()).toEqual([
       { locale: "en", name: "English" },
       { locale: "fr", name: "Français" },
+      { locale: "pt-BR", name: "Português (Brasil)" },
     ]);
+  });
+
+  it("translates the dashboard in portuguese and keeps english elsewhere", async () => {
+    await i18nProvider.changeLocale("pt-BR");
+
+    expect(i18nProvider.translate("crm.dashboard.kpi.average_ticket")).toBe(
+      "Ticket médio",
+    );
+    expect(i18nProvider.translate("crm.language")).toBe("Language");
   });
 
   it("translates the language key in french", async () => {
@@ -52,6 +62,15 @@ describe("i18nProvider", () => {
     });
 
     expect(getInitialLocale()).toBe("fr");
+  });
+
+  it("uses browser portuguese locale when available", () => {
+    vi.stubGlobal("navigator", {
+      language: "pt-BR",
+      languages: ["pt-BR", "en-US"],
+    });
+
+    expect(getInitialLocale()).toBe("pt-BR");
   });
 
   it("falls back to english when browser locale is unsupported", () => {

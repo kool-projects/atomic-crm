@@ -1,4 +1,4 @@
-import { Plus, Users } from "lucide-react";
+import { Plus } from "lucide-react";
 import { useGetIdentity, useGetList, useTranslate } from "ra-core";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
+import { crmIcons } from "../misc/crmIcons";
 import { SimpleList } from "../simple-list/SimpleList";
 import { Avatar } from "../contacts/Avatar";
 import type { Contact } from "../types";
@@ -35,7 +36,7 @@ export const HotContacts = () => {
     <div className="flex flex-col gap-2">
       <div className="flex items-center">
         <div className="mr-3 flex">
-          <Users className="text-muted-foreground w-6 h-6" />
+          <crmIcons.hot className="text-primary w-6 h-6" />
         </div>
         <h2 className="text-xl font-semibold text-muted-foreground">
           {translate("resources.contacts.hot.title")}

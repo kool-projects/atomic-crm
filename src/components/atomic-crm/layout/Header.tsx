@@ -1,13 +1,17 @@
 import { FileText, Import, Settings, User, Users } from "lucide-react";
 import { CanAccess, useTranslate, useUserMenu } from "ra-core";
-import { Link, matchPath, useLocation } from "react-router";
+import { Link, matchPath, useLocation, useNavigate } from "react-router";
 import { RefreshButton } from "@/components/admin/refresh-button";
 import { ThemeModeToggle } from "@/components/admin/theme-mode-toggle";
 import { UserMenu } from "@/components/admin/user-menu";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
 import { useConfigurationContext } from "../root/ConfigurationContext";
+import * as m from "motion/react-m";
+import { crmIcons } from "../misc/crmIcons";
 import { ImportPage } from "../misc/ImportPage";
+import { requestTour } from "../onboarding/tourProgress";
+import type { TourId } from "../onboarding/tourSteps";
 import { ChangelogPage } from "../misc/ChangelogPage";
 import { GlobalSearchButton } from "../search/GlobalSearchButton";
 
@@ -25,6 +29,8 @@ const Header = () => {
     currentPath = "/companies";
   } else if (matchPath("/deals/*", location.pathname)) {
     currentPath = "/deals";
+  } else if (matchPath("/calendar/*", location.pathname)) {
+    currentPath = "/calendar";
   } else {
     currentPath = false;
   }
@@ -56,6 +62,7 @@ const Header = () => {
                   <NavigationTab
                     label={translate("ra.page.dashboard")}
                     to="/"
+                    Icon={crmIcons.dashboard}
                     isActive={currentPath === "/"}
                   />
                   <NavigationTab
@@ -63,6 +70,7 @@ const Header = () => {
                       smart_count: 2,
                     })}
                     to="/contacts"
+                    Icon={crmIcons.contacts}
                     isActive={currentPath === "/contacts"}
                   />
                   <NavigationTab
@@ -70,6 +78,7 @@ const Header = () => {
                       smart_count: 2,
                     })}
                     to="/companies"
+                    Icon={crmIcons.companies}
                     isActive={currentPath === "/companies"}
                   />
                   <NavigationTab
@@ -77,11 +86,19 @@ const Header = () => {
                       smart_count: 2,
                     })}
                     to="/deals"
+                    Icon={crmIcons.deals}
                     isActive={currentPath === "/deals"}
+                  />
+                  <NavigationTab
+                    label={translate("crm.calendar.title")}
+                    to="/calendar"
+                    tourId="nav-calendar"
+                    Icon={crmIcons.calendar}
+                    isActive={currentPath === "/calendar"}
                   />
                 </nav>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center" data-tour="header-tools">
                 <GlobalSearchButton />
                 <ThemeModeToggle />
                 <RefreshButton />
@@ -94,6 +111,8 @@ const Header = () => {
                     <SettingsMenu />
                   </CanAccess>
                   <ImportFromJsonMenuItem />
+                  <TourMenuItem tourId="dashboard" />
+                  <TourMenuItem tourId="deals" />
                   <ChangelogMenuItem />
                 </UserMenu>
               </div>
@@ -109,19 +128,31 @@ const NavigationTab = ({
   label,
   to,
   isActive,
+  Icon,
+  tourId,
 }: {
   label: string;
   to: string;
   isActive: boolean;
+  Icon: React.ComponentType<{ className?: string }>;
+  tourId?: string;
 }) => (
   <Link
     to={to}
-    className={`px-6 py-3 text-sm font-medium transition-colors border-b-2 ${
+    data-tour={tourId}
+    className={`relative flex items-center gap-2 px-6 py-3 text-sm font-medium transition-colors ${
       isActive
-        ? "text-secondary-foreground border-secondary-foreground"
-        : "text-secondary-foreground/70 border-transparent hover:text-secondary-foreground/80"
+        ? "text-secondary-foreground"
+        : "text-secondary-foreground/70 hover:text-secondary-foreground/80"
     }`}
   >
+    {isActive ? (
+      <m.span
+        layoutId="main-navigation-underline"
+        className="absolute inset-x-0 bottom-0 h-0.5 bg-primary"
+      />
+    ) : null}
+    <Icon className={isActive ? "size-4 text-primary" : "size-4"} />
     {label}
   </Link>
 );
@@ -186,6 +217,31 @@ const ImportFromJsonMenuItem = () => {
         <Import />
         {translate("crm.header.import_data")}
       </Link>
+    </DropdownMenuItem>
+  );
+};
+
+/** Opens a guided tour from anywhere: goes to its page first if needed. */
+const TourMenuItem = ({ tourId }: { tourId: TourId }) => {
+  const translate = useTranslate();
+  const userMenuContext = useUserMenu();
+  const navigate = useNavigate();
+  const location = useLocation();
+  if (!userMenuContext) {
+    throw new Error("<TourMenuItem> must be used inside <UserMenu>");
+  }
+  const path = tourId === "deals" ? "/deals" : "/";
+  return (
+    <DropdownMenuItem
+      className="flex items-center gap-2"
+      onClick={() => {
+        userMenuContext.onClose();
+        if (location.pathname !== path) navigate(path);
+        requestTour(tourId);
+      }}
+    >
+      <crmIcons.tour />
+      {translate(`crm.onboarding.menu_${tourId}`)}
     </DropdownMenuItem>
   );
 };

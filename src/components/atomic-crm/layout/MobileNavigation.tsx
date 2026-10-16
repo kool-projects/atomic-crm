@@ -6,11 +6,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { Home, ListTodo, Plus, Settings, Users } from "lucide-react";
+import { Plus, Settings } from "lucide-react";
 import { useTranslate } from "ra-core";
 import { Link, matchPath, useLocation, useMatch } from "react-router";
 import { ContactCreateSheet } from "../contacts/ContactCreateSheet";
 import { useState } from "react";
+import { crmIcons } from "../misc/crmIcons";
 import { NoteCreateSheet } from "../notes/NoteCreateSheet";
 import { TaskCreateSheet } from "../tasks/TaskCreateSheet";
 
@@ -29,6 +30,8 @@ export const MobileNavigation = () => {
     currentPath = "/tasks";
   } else if (matchPath("/deals/*", location.pathname)) {
     currentPath = "/deals";
+  } else if (matchPath("/calendar/*", location.pathname)) {
+    currentPath = "/calendar";
   } else {
     currentPath = false;
   }
@@ -56,13 +59,13 @@ export const MobileNavigation = () => {
         <>
           <NavigationButton
             href="/"
-            Icon={Home}
+            Icon={crmIcons.dashboard}
             label={translate("ra.page.dashboard")}
             isActive={currentPath === "/"}
           />
           <NavigationButton
             href="/contacts"
-            Icon={Users}
+            Icon={crmIcons.contacts}
             label={translate("resources.contacts.name", {
               smart_count: 2,
             })}
@@ -71,9 +74,15 @@ export const MobileNavigation = () => {
           <CreateButton />
           <NavigationButton
             href="/tasks"
-            Icon={ListTodo}
+            Icon={crmIcons.tasks}
             label={translate("resources.tasks.name", { smart_count: 2 })}
             isActive={currentPath === "/tasks"}
+          />
+          <NavigationButton
+            href="/calendar"
+            Icon={crmIcons.calendar}
+            label={translate("crm.calendar.title")}
+            isActive={currentPath === "/calendar"}
           />
           <SettingsButton />
         </>
@@ -97,7 +106,7 @@ const NavigationButton = ({
     asChild
     variant="ghost"
     className={cn(
-      "flex-col gap-1 h-auto py-2 px-1 rounded-md w-16",
+      "flex-col gap-1 h-auto py-2 px-1 rounded-md w-14",
       isActive ? null : "text-muted-foreground",
     )}
   >

@@ -34,11 +34,14 @@ import sales from "../sales";
 import { SettingsPageMobile } from "../settings/SettingsPageMobile";
 import { ProfilePage } from "../settings/ProfilePage";
 import { SettingsPage } from "../settings/SettingsPage";
+import { CalendarPage } from "../calendar/CalendarPage";
 import {
   CONFIGURATION_STORE_KEY,
   type ConfigurationContextValue,
 } from "./ConfigurationContext";
 import type { CrmDataProvider } from "../providers/types";
+import { defaultColorScheme, useApplyColorScheme } from "./colorScheme";
+import { useStoredColorScheme } from "./useStoredColorScheme";
 import {
   defaultCompanySectors,
   defaultCurrency,
@@ -122,6 +125,7 @@ export const CRM = ({
   dealStages = defaultDealStages,
   darkModeLogo = defaultDarkModeLogo,
   lightModeLogo = defaultLightModeLogo,
+  colorScheme = defaultColorScheme,
   noteStatuses = defaultNoteStatuses,
   taskTypes = defaultTaskTypes,
   title = defaultTitle,
@@ -161,10 +165,13 @@ export const CRM = ({
         title,
         darkModeLogo,
         lightModeLogo,
+        colorScheme,
       } satisfies ConfigurationContextValue);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [store]);
+
+  useApplyColorScheme(useStoredColorScheme(store, colorScheme));
 
   const isMobile = useIsMobile();
 
@@ -258,6 +265,7 @@ const DesktopAdmin = (
 
       <CustomRoutes>
         <Route path={ProfilePage.path} element={<ProfilePage />} />
+        <Route path={CalendarPage.path} element={<CalendarPage />} />
         <Route path={SettingsPage.path} element={<SettingsPage />} />
         <Route path={ImportPage.path} element={<ImportPage />} />
         <Route path={ChangelogPage.path} element={<ChangelogPage />} />
@@ -335,6 +343,7 @@ const MobileAdmin = (
             path={SettingsPageMobile.path}
             element={<SettingsPageMobile />}
           />
+          <Route path={CalendarPage.path} element={<CalendarPage />} />
           <Route path={ChangelogPage.path} element={<ChangelogPage />} />
         </CustomRoutes>
         <Resource

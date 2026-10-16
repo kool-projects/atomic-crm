@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useStore } from "ra-core";
 
 import type { DealStage, LabeledValue, NoteStatus } from "../types";
+import type { ColorScheme } from "./colorScheme";
 import { defaultConfiguration } from "./defaultConfiguration";
 
 export const CONFIGURATION_STORE_KEY = "app.configuration";
@@ -17,6 +18,7 @@ export interface ConfigurationContextValue {
   title: string;
   darkModeLogo: string;
   lightModeLogo: string;
+  colorScheme?: ColorScheme;
 }
 
 export const useConfigurationContext = () => {
